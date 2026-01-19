@@ -1,59 +1,66 @@
-🏡 Real Estate Platform – Spring Boot & Thymeleaf
+# 🏡 Real Estate Platform  
+**Spring Boot | Thymeleaf | MySQL | Spring Security**
 
-A full-stack real estate web application built using Spring Boot, Thymeleaf, Spring Security, JPA (Hibernate), and MySQL, allowing users to list properties and admins to approve or manage them.
+A full-stack **Real Estate Web Application** built using **Spring Boot 3**, **Thymeleaf**, **Spring Security**, **JPA (Hibernate)**, and **MySQL**.  
+The platform allows users to list properties while admins review, approve, and manage listings securely.
 
-📌 Features
-👤 User (Customer)
+---
 
-User registration & login
+## 🚀 Features
 
-Secure authentication using Spring Security
+### 👤 User (Customer)
+- User registration & login
+- Secure authentication using **Spring Security**
+- Add new property listings
+- Upload property images using **Cloudinary**
+- View own listed properties in user dashboard
+- Track property approval status:
+  - ⏳ Pending  
+  - ✅ Approved
 
-Add new property listings
+---
 
-Upload property images (Cloudinary)
+### 🛡️ Admin
+- Secure admin-only access
+- View all property listings
+- Approve property submissions
+- Delete properties
+- Manage platform content efficiently
 
-View own listed properties in dashboard
+---
 
-Property approval status (Pending / Approved)
+### 🌐 Public Access
+- View **approved** property listings
+- Advanced property search:
+  - 📍 Location  
+  - 🏷️ Property type (SALE / RENT)  
+  - 💰 Price range  
+  - 🔍 Keyword search  
 
-🛡️ Admin
+---
 
-View all properties
+## 🧱 Tech Stack
 
-Approve property listings
+| Layer        | Technology |
+|-------------|-----------|
+| Backend     | Spring Boot 3.2 |
+| Frontend    | Thymeleaf, HTML, CSS |
+| Security    | Spring Security |
+| ORM         | Spring Data JPA (Hibernate) |
+| Database    | MySQL |
+| Image Upload| Cloudinary |
+| Build Tool  | Maven |
+| Java        | Java 17 |
+| Testing     | JUnit 5, Mockito |
 
-Delete properties
+---
 
-Restricted admin-only access
+## 🔐 Test Credentials
 
-🌐 Public
+### 👤 Customer
+- **Email:** `testcustomer@gmail.com`
+- **Password:** `testcustomer`
 
-View approved properties
-
-Search properties by:
-
-Location
-
-Type (SALE / RENT)
-
-Price range
-
-Keyword
-
-🧱 Tech Stack
-Layer	Technology
-Backend	Spring Boot 3.2
-Frontend	Thymeleaf, HTML, CSS
-Security	Spring Security
-ORM	Spring Data JPA (Hibernate)
-Database	MySQL
-Image Upload	Cloudinary
-Build Tool	Maven
-Java Version	Java 17
-Testing	JUnit 5, Mockito
-
-👨‍💻 Author
-
-Regin V
-Spring Boot | Java | Full Stack Developer
+### 🛡️ Admin
+- **Email:** `testadmin@gmail.com`
+- **Password:** `testadmin`
