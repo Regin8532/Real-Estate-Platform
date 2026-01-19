@@ -61,6 +61,11 @@ The platform allows users to list properties while admins review, approve, and m
 - **Email:** `testcustomer@gmail.com`
 - **Password:** `testcustomer`
 
+### 👤 Customer1
+- **Email:** `testcustomer1@gmail.com`
+- **Password:** `testcustomer1`
+
 ### 🛡️ Admin
 - **Email:** `testadmin@gmail.com`
 - **Password:** `testadmin`
+
