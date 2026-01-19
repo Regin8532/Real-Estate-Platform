@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: #f8fafc;
+            color: #1f2937;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 25px 0;
+            color: #1e3a8a;
+        }
+
+        .dashboard-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 15px 40px;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+        .btn-back {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background: #4b5563;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+            text-align: left;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        .status-approved {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+z
+        @media (max-width: 600px) {
+            .dashboard-actions {
+                justify-content: center;
+            }
+        }
+
+        .alert {
+            max-width: 1000px;
+            margin: 15px auto;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background-color: #dcfce7;
+            color: #166534;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>My Properties</h2>
+
+<div class="dashboard-container">
+
+    <div class="dashboard-actions">
+        <a th:href="@{/}" class="btn btn-back">🏠 Back to Home</a>
+        <a th:href="@{/property/new}" class="btn btn-primary">➕ Add Property</a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="p : ${properties}">
+                <td th:text="${p.title}"></td>
+                <td>₹ <span th:text="${p.price}"></span></td>
+                <td>
+                    <span th:if="${p.approved}" class="status-approved">Approved</span>
+                    <span th:if="${!p.approved}" class="status-pending">Pending</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<!-- ✅ SUCCESS ALERT -->
+<div th:if="${success}" class="alert">
+    <span th:text="${success}"></span>
+</div>
+</body>
+</html>

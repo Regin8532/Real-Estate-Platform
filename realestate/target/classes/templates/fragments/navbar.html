@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        /* ===== GLOBAL FIXES ===== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #1e3a8a, #2563eb);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .btn-primary {
+            background: #16a34a;
+        }
+
+        .btn-outline {
+            border: 1px solid #ffffff;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: #1f2937;
+        }
+
+        .logout-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            .nav-right {
+                width: 100%;
+                justify-content: flex-start;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav th:fragment="navbar"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+     class="navbar">
+
+    <!-- Left -->
+    <div class="nav-left">
+        <a th:href="@{/}" class="brand">🏠 RealEstate</a>
+    </div>
+
+    <!-- Right -->
+    <div class="nav-right">
+
+        <!-- Not logged in -->
+        <div sec:authorize="isAnonymous()" class="nav-group">
+            <a th:href="@{/login}" class="nav-link">Login</a>
+            <a th:href="@{/register}" class="nav-link btn-outline">Register</a>
+        </div>
+
+        <!-- CUSTOMER -->
+        <div sec:authorize="hasRole('CUSTOMER')" class="nav-group">
+            <a th:href="@{/dashboard}" class="nav-link">Dashboard</a>
+            <a th:href="@{/property/new}" class="nav-link btn-primary">Add Property</a>
+        </div>
+
+        <!-- ADMIN -->
+        <div sec:authorize="hasRole('ADMIN')" class="nav-group">
+            <a th:href="@{/admin/properties}" class="nav-link btn-warning">Admin Panel</a>
+        </div>
+
+        <!-- Logged in -->
+        <div sec:authorize="isAuthenticated()" class="nav-group">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+
+    </div>
+</nav>
+
+
+</body>
+</html>

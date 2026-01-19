@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Property</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: #f8fafc;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            color: #1e3a8a;
+        }
+
+        .form-container {
+            max-width: 600px;
+            background: white;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<h2>Add Property</h2>
+
+<div class="form-container">
+    <form th:action="@{/property}" th:object="${property}"
+          method="post" enctype="multipart/form-data">
+
+        <label>Title</label>
+        <input type="text" th:field="*{title}" required>
+
+        <label>Description</label>
+        <textarea th:field="*{description}" required></textarea>
+
+        <label>Price</label>
+        <input type="number" th:field="*{price}" required>
+
+        <label>Type</label>
+        <select th:field="*{type}">
+            <option value="SALE">Sale</option>
+            <option value="RENT">Rent</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" th:field="*{location}" required>
+
+        <label>Image</label>
+        <input type="file" name="image" required>
+
+        <button type="submit">Save Property</button>
+    </form>
+
+    <a th:href="@{/dashboard}" class="back-link">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

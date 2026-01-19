@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Property Detail</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2 th:text="${property.title}">Property Title</h2>
+
+<p><strong>Description:</strong> <span th:text="${property.description}"></span></p>
+<p><strong>Price:</strong> $<span th:text="${property.price}"></span></p>
+
+<img th:src="${property.imageUrl != null ? property.imageUrl : '/images/cat-eye.jpg'}"
+     class="img-fluid rounded shadow"
+     style="max-height:400px; object-fit:cover;">
+
+<p><a th:href="@{/property/list}">Back to List</a></p>
+</body>
+</html>

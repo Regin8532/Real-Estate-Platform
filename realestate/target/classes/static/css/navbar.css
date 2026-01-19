@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.btn-primary {
+    background: #16a34a;
+}
+
+.btn-outline {
+    border: 1px solid #ffffff;
+}
+
+.btn-warning {
+    background: #f59e0b;
+    color: #1f2937;
+}
+
+.logout-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #b91c1c;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-right {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+}
